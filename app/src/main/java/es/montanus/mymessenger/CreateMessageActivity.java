@@ -15,11 +15,15 @@ public class CreateMessageActivity extends Activity {
     }
 
     public void onSendMessage(View view) {
-        Intent intent = new Intent(Intent.ACTION_SEND).
+        Intent intent = getBaseIntent();
+        Intent chosenIntent = Intent.createChooser(intent, getString(R.string.chooser_title));
+        startActivity(chosenIntent);
+    }
+
+    private Intent getBaseIntent() {
+        return new Intent(Intent.ACTION_SEND).
                 setType("text/plain").
                 putExtra(Intent.EXTRA_TEXT, getMessage());
-
-        startActivity(intent);
     }
 
     private String getMessage() {
