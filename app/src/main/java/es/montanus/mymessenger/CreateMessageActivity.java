@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class CreateMessageActivity extends Activity {
 
@@ -14,7 +15,14 @@ public class CreateMessageActivity extends Activity {
     }
 
     public void onSendMessage(View view) {
-        Intent intent = new Intent(this, ReceiveMessageActivity.class);
+        Intent intent = new Intent(this, ReceiveMessageActivity.class).
+                putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, getMessage());
+
         startActivity(intent);
+    }
+
+    private String getMessage() {
+        EditText messageField = findViewById(R.id.message);
+        return messageField.getText().toString();
     }
 }
