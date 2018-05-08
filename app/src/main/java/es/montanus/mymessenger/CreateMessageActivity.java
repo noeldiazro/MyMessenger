@@ -15,8 +15,9 @@ public class CreateMessageActivity extends Activity {
     }
 
     public void onSendMessage(View view) {
-        Intent intent = new Intent(this, ReceiveMessageActivity.class).
-                putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, getMessage());
+        Intent intent = new Intent(Intent.ACTION_SEND).
+                setType("text/plain").
+                putExtra(Intent.EXTRA_TEXT, getMessage());
 
         startActivity(intent);
     }

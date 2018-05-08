@@ -1,6 +1,7 @@
 package es.montanus.mymessenger;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -12,7 +13,7 @@ public class ReceiveMessageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_message);
-        setMessage(getIntent().getStringExtra(EXTRA_MESSAGE));
+        setMessage(getIntent().getStringExtra(Intent.EXTRA_TEXT));
     }
 
     private void setMessage(String message) {
